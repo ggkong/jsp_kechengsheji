@@ -46,4 +46,10 @@ public class Reader {
     public String getGender() {
         return gender;
     }
+
+    public Reader(String name, String tel, String cardid) {
+        this.name = name;
+        this.tel = tel;
+        this.cardid = cardid;
+    }
 }

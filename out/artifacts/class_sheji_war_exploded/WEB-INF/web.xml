@@ -22,4 +22,28 @@
         <servlet-name>book</servlet-name>
         <url-pattern>/book</url-pattern>
     </servlet-mapping>
+    <filter>
+        <filter-name>readerFilter</filter-name>
+        <filter-class>com.inspur.filter.ReaderFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>readerFilter</filter-name>
+        <url-pattern>/book</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>com.inspur.controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>admin</servlet-name>
+        <servlet-class>com.inspur.controller.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
 </web-app>

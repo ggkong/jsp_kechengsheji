@@ -16,7 +16,7 @@
 	<div id="main">
 		<img src="images/login.jpg" id="main_bg"/>
 		<div id="login_block">
-			<form action="login" method="post" id="loginForm">
+			<form action="${pageContext.request.contextPath}/login" method="post" id="loginForm">
 				<table border="0">
 					<tr>
 						<td class="title">用户名:</td>

@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  return;
 				  }
 				  page++;
-				  location.href = "/admin?page="+page;
+				  location.href = "${pageContext.request.contextPath}/admin?page="+page;
 			  })
 
 			  $("#previous").click(function () {
@@ -41,16 +41,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  return;
 				  }
 				  page--;
-				  location.href = "/admin?page="+page;
+				  location.href = "${pageContext.request.contextPath}/admin?page="+page;
 			  })
 
 			  $("#first").click(function () {
-				  location.href = "/admin?page=1";
+				  location.href = "${pageContext.request.contextPath}/admin?page=1";
 			  })
 
 			  $("#last").click(function(){
 				  var pages = parseInt($("#pages").html());
-				  location.href = "/admin?page="+pages;
+				  location.href = "${pageContext.request.contextPath}/admin?page="+pages;
 			  })
 		  })
 	  </script>
@@ -62,8 +62,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
   	<div id="main">
 		<div class="navigation">
-				当前位置:&nbsp;&nbsp;<a href="/admin?method=getBorrowed&page=1">还书管理</a>
-				<div id="readerBlock">欢迎回来&nbsp;:${admin.username }&nbsp;<a href="logout">注销</a></div>
+				当前位置:&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin?method=getBorrowed&page=1">还书管理</a>
+				<div id="readerBlock">欢迎回来&nbsp;:${admin.username }&nbsp;<a href="${pageContext.request.contextPath}/logout">注销</a></div>
 		</div>
 		<div class="img_block">
 			<img src="images/main_booksort.gif" class="img" />
@@ -88,13 +88,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${borrow.book.name}</td>
 					<td>${borrow.book.author}</td>
 					<td>${borrow.reader.name}</td>
-					<td>${borrow.reader.cardId}</td>
+					<td>${borrow.reader.cardid}</td>
 					<td>${borrow.reader.tel}</td>
 					<td>${borrow.borrowTime}</td>
 					<td>${borrow.returnTime}</td>
 					<td>
-						<a href="/admin?method=handle&id=${borrow.id}&state=1">同意</a>
-						<a href="/admin?method=handle&id=${borrow.id}&state=2">拒绝</a>
+						<a href="${pageContext.request.contextPath}/admin?method=handle&id=${borrow.id}&state=1">同意</a>
+						<a href="${pageContext.request.contextPath}/admin?method=handle&id=${borrow.id}&state=2">拒绝</a>
 					</td>
 				</tr>
 			</c:forEach>

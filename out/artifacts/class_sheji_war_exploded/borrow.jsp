@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="css/index.css" type="text/css" rel="stylesheet">
 	  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	  <script type="text/javascript">
+
 		  $(function(){
 			  $("#next").click(function(){
 				  var pages = parseInt($("#pages").html());
@@ -32,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  return;
 				  }
 				  page++;
-				  location.href = "/book?method=findAllBorrow&page="+page;
+				  location.href = "${pageContext.request.contextPath}/book?method=findAllBorrow&page="+page;
 			  })
 
 			  $("#previous").click(function () {
@@ -41,16 +42,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  return;
 				  }
 				  page--;
-				  location.href = "/book?method=findAllBorrow&page="+page;
+				  location.href = "${pageContext.request.contextPath}/book?method=findAllBorrow&page="+page;
 			  })
 
 			  $("#first").click(function () {
-				  location.href = "/book?method=findAllBorrow&page=1";
+				  location.href = "${pageContext.request.contextPath}/book?method=findAllBorrow&page=1";
 			  })
 
 			  $("#last").click(function(){
 				  var pages = parseInt($("#pages").html());
-				  location.href = "/book?method=findAllBorrow&page="+pages;
+				  location.href = "${pageContext.request.contextPath}/book?method=findAllBorrow&page="+pages;
 			  })
 		  })
 	  </script>
@@ -62,8 +63,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
   	<div id="main">
 		<div class="navigation">
-				当前位置:&nbsp;&nbsp;<a href="/book?page=1">首页</a>
-				<div id="readerBlock">欢迎回来&nbsp;:${reader.name }&nbsp;<a href="/logout">注销</a></div>
+				当前位置:&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/book?page=1">首页</a>
+				<div id="readerBlock">欢迎回来&nbsp;:${reader.name }&nbsp;<a href="${pageContext.request.contextPath}/logout">注销</a></div>
 		</div>
 		<div class="img_block">
 			<img src="images/main_booksort.gif" class="img" />
@@ -90,12 +91,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${borrow.book.publish}</td>
 					<td>${borrow.reader.name}</td>
 					<td>${borrow.reader.tel}</td>
-					<td>${borrow.reader.cardId}</td>
+					<td>${borrow.reader.cardid}</td>
 					<td>${borrow.borrowTime}</td>
 					<td>${borrow.returnTime}</td>
 					<td>
 						<c:if test="${borrow.state == 0}">
-							<font color="black">未审核</font>
+							<font color="#9932cc">未审核</font>
 						</c:if>
 						<c:if test="${borrow.state == 1}">
 							<font color="green">审核通过</font>

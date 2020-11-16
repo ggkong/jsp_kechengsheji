@@ -2,6 +2,7 @@ package com.inspur.controller;
 
 import com.inspur.entity.Admin;
 import com.inspur.entity.Book;
+import com.inspur.entity.Borrow;
 import com.inspur.entity.Reader;
 import com.inspur.service.BookService;
 import com.inspur.service.LoginService;
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class LoginServlet extends HttpServlet {
     private LoginService loginService = new LoginServiceImpl();
-    private BookService bookService = new BookServiceImpl();
+
     /**
      *
      * @param req
@@ -41,15 +42,11 @@ public class LoginServlet extends HttpServlet {
             switch (type){
                 case "reader":
                     session.setAttribute("reader",(Reader) object);
-                    List<Book> list = bookService.findAll(1);
-                    req.setAttribute("list",list);
-                    req.setAttribute("dataPrePage",6);
-                    req.setAttribute("currentPage",1);
-                    req.setAttribute("pages",bookService.getPages());
-                    req.getRequestDispatcher("index.jsp").forward(req,resp);
+                    resp.sendRedirect(req.getContextPath()+"/book?page=1");
                     break;
                 case "admin":
                     session.setAttribute("admin",(Admin) object);
+                    resp.sendRedirect(req.getContextPath()+"/admin?method=findAllBorrow&page=1");
                     break;
             }
             return;

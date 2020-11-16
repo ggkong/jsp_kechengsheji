@@ -46,4 +46,10 @@ public class Book {
     public BookCase getBookCase() {
         return bookCase;
     }
+
+    public Book(String name, String author, String publish) {
+        this.name = name;
+        this.author = author;
+        this.publish = publish;
+    }
 }
